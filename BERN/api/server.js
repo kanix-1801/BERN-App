@@ -14,13 +14,15 @@ const contractAddress = "0x4bb39BaBB53Ef2313229920256890199ee193DF3";
 const contractInstance = new web3.eth.Contract(ABI, contractAddress);
 
 const view = async () => {
-  const task = await contractInstance.method.get().call();
+  // const task = await contractInstance.method.get().call();
+  const task = await contractInstance.methods.get().call();
   console.log(task);
 };
-
-const test = await view();
+view();
+// const test = await view();
 app.listen(PORT, () => {
   console.log("Server started on port", PORT);
+  // console.log(view());
 });
 
 // const express = require("express");
