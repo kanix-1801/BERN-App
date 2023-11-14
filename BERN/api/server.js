@@ -8,21 +8,23 @@ const PORT = 4000;
 const web3 = new Web3(
   "https://polygon-mumbai.g.alchemy.com/v2/lZCx3Go-DzOvoUIBS3oXOPdqNaCBYX2h"
 );
-
-const contractAddress = "0x4bb39BaBB53Ef2313229920256890199ee193DF3";
-
+const contractAddress = "0x34f0f055d0Ad2918e36E3d0018b38EC9bEdD394A";
 const contractInstance = new web3.eth.Contract(ABI, contractAddress);
 
 const view = async () => {
-  // const task = await contractInstance.method.get().call();
   const task = await contractInstance.methods.get().call();
   console.log(task);
 };
+const num = 11;
+const setValue = async (num) => {
+  await contractInstance.methods.set(num).call();
+};
 view();
-// const test = await view();
+// setValue(10);
+// view();
 app.listen(PORT, () => {
   console.log("Server started on port", PORT);
-  // console.log(view());
+  // view();
 });
 
 // const express = require("express");
@@ -35,17 +37,32 @@ app.listen(PORT, () => {
 // const web3 = new Web3(
 //   "https://polygon-mumbai.g.alchemy.com/v2/lZCx3Go-DzOvoUIBS3oXOPdqNaCBYX2h"
 // );
-// //cotract address : 0x3C422f0e4E578472FaFDbD4621448f84270503c4
-// const contractAddress = "0x4bb39babb53ef2313229920256890199ee193df3";
-// const contract = new web3.eth.Contract(ABI, contractAddress);
-// console.log(contract);
+// const contractAddress = "0x4bb39BaBB53Ef2313229920256890199ee193DF3";
+// const contractInstance = new web3.eth.Contract(ABI, contractAddress);
 
-// // const view = async () => {
-// //   const task = await contract.method.get().call();
-// //   console.log(task);
-// // };
-
+// const view = async () => {
+//   const task = await contractInstance.methods.get().call();
+//   console.log(task);
+// };
 // view();
 // app.listen(PORT, () => {
-//   console.log("start");
+//   console.log("Server started on port", PORT);
+//   view();
 // });
+
+// old abi
+// [
+// 	{
+// 		"inputs": [],
+// 		"name": "get",
+// 		"outputs": [
+// 			{
+// 				"internalType": "uint256",
+// 				"name": "",
+// 				"type": "uint256"
+// 			}
+// 		],
+// 		"stateMutability": "view",
+// 		"type": "function"
+// 	}
+// ]
