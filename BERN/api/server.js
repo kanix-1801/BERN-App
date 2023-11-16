@@ -8,20 +8,21 @@ const PORT = 4000;
 const web3 = new Web3(
   "https://polygon-mumbai.g.alchemy.com/v2/lZCx3Go-DzOvoUIBS3oXOPdqNaCBYX2h"
 );
-const contractAddress = "0x34f0f055d0Ad2918e36E3d0018b38EC9bEdD394A";
+const contractAddress = "0xF9F7090f0642Ff0359756F3faB1F207Ea8cC74fF";
 const contractInstance = new web3.eth.Contract(ABI, contractAddress);
 
-const view = async () => {
-  const task = await contractInstance.methods.get().call();
-  console.log(task);
-};
-const num = 11;
-const setValue = async (num) => {
-  await contractInstance.methods.set(num).call();
-};
-view();
-// setValue(10);
-// view();
+app.get("/api/eth/data", async (req, res) => {
+  try {
+    const task = await contractInstance.methods.get1().call();
+    console.log(task);
+    res.status(200).json({ status: 200, task, message: "Task Exist" });
+
+    // res;
+  } catch (error) {
+    res.status(500).json({ status: 500, message: "task not exist" });
+    // console.error();
+  }
+});
 app.listen(PORT, () => {
   console.log("Server started on port", PORT);
   // view();

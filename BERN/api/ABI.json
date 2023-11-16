@@ -21,7 +21,20 @@
 	},
 	{
 		"inputs": [],
-		"name": "get",
+		"name": "get1",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get2",
 		"outputs": [
 			{
 				"internalType": "uint256",
